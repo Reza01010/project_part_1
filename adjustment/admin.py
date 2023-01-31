@@ -8,12 +8,14 @@ class CustomUserAdmin(UserAdmin):
     add_form = CustomUserCreationForm
     form = CustomUserChangeForm
     model = CustomUser
-
-
-
-
-
-
+    fieldsets = UserAdmin.fieldsets + (
+        (None, {
+            'fields': ('age', 'gender', )}),
+    )
+    add_fieldsets = UserAdmin.add_fieldsets + (
+        (None, {
+            'fields': ('age', 'gender', )}),
+    )
 
 
 admin.site.register(CustomUser, CustomUserAdmin)
